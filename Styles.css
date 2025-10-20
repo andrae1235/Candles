@@ -1,5 +1,5 @@
 /* Basic reset */
-*{box-sizing:border-box}html,body{height:100%}body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;line-height:1.4;margin:0;color:#222;background:#fff}
+*{box-sizing:border-box}html,body{height:100%}body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;line-height:1.4;margin:0;color:#222;background:linear-gradient (135deg,#ff450 30%, #98ff98 100%) color: #222; margin: 0; padding: 0; }
 
 /* Container */
 .container{max-width:1100px;margin:0 auto;padding:16px}
