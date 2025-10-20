@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My App Store — Demo</title>
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="stylesheet" href="/styles.css" />
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="brand">My App Store</h1>
+      <nav class="nav">
+        <div class="nav-links">
+          <a href="#" class="nav-link">Home</a>
+          <a href="#" class="nav-link">Categories</a>
+          <a href="#" class="nav-link">About</a>
+        </div>
+        <button id="cart-button" class="cart-btn">
+          Cart <span id="cart-count" class="cart-count">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Shop apps & digital products</h2>
+      <p>Catalog style, easy checkout — free to host & customize.</p>
+    </section>
+
+    <section id="catalog" class="catalog-grid" aria-label="Product catalog">
+      <!-- product cards injected here -->
+    </section>
+
+    <!-- Cart modal -->
+    <div id="cart-modal" class="cart-modal" aria-hidden="true">
+      <div class="cart-panel">
+        <button id="close-cart" class="close-cart">&times;</button>
+        <h3>Your Cart</h3>
+        <div id="cart-items"></div>
+        <div class="cart-footer">
+          <div class="cart-totals">
+            <span>Subtotal</span>
+            <strong id="cart-subtotal">$0.00</strong>
+          </div>
+          <div class="cart-actions">
+            <button id="clear-cart" class="btn btn-secondary">Clear</button>
+            <button id="checkout-all" class="btn btn-primary">Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> My App Store — Built with static files & PWA</p>
+    </div>
+  </footer>
+
+  <script src="/app.js" defer></script>
+  <script>
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(()=>{/*ignore*/});
+    }
+  </script>
+</body>
+</html>
