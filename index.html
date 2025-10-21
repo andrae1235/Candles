@@ -3,70 +3,95 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>My App Store — Demo</title>
-  <link rel="manifest" href="/manifest.json" />
-  <link rel="stylesheet" href="/styles.css" />
-  <meta name="theme-color" content="#ffffff">
+  <title>Blossom & Body — Demo Store</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/styles.css">
+  <meta name="theme-color" content="#6b3fb5">
 </head>
 <body>
   <header class="site-header">
-    <div class="container header-inner">
-      <h1 class="brand">My App Store</h1>
-      <nav class="nav">
-        <div class="nav-links">
-          <a href="#" class="nav-link">Home</a>
-          <a href="#" class="nav-link">Categories</a>
-          <a href="#" class="nav-link">About</a>
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand">Blossom & Body</div>
+        <div class="top-actions">
+          <input id="search" class="search" placeholder="Search fragrances, candles, gifts..." />
+          <button id="cart-btn" class="cart-btn">Cart <span id="cart-count">0</span></button>
         </div>
-        <button id="cart-button" class="cart-btn">
-          Cart <span id="cart-count" class="cart-count">0</span>
-        </button>
-      </nav>
+      </div>
     </div>
+
+    <nav class="main-nav">
+      <div class="container nav-inner">
+        <div class="nav-links" id="category-list">
+          <!-- categories injected here -->
+        </div>
+      </div>
+    </nav>
   </header>
 
-  <main class="container">
+  <main class="container main">
     <section class="hero">
-      <h2>Shop apps & digital products</h2>
-      <p>Catalog style, easy checkout — free to host & customize.</p>
+      <div class="hero-left">
+        <h1>Fragrances & Home Scents</h1>
+        <p>Shop seasonal scents, body care, and luxury candles — curated just for you.</p>
+        <a href="#" class="cta" id="shop-all">Shop All</a>
+      </div>
+      <div class="hero-right"><img src="https://picsum.photos/seed/hero/900/500" alt="hero image"></div>
+    </section>
+
+    <section class="filters-row">
+      <div class="filters">
+        <label>
+          <select id="sort">
+            <option value="featured">Featured</option>
+            <option value="new">Newest</option>
+            <option value="price-asc">Price — Low to High</option>
+            <option value="price-desc">Price — High to Low</option>
+          </select>
+        </label>
+        <label class="sale-toggle"><input type="checkbox" id="only-sale"> On Sale</label>
+      </div>
     </section>
 
     <section id="catalog" class="catalog-grid" aria-label="Product catalog">
       <!-- product cards injected here -->
     </section>
+  </main>
 
-    <!-- Cart modal -->
-    <div id="cart-modal" class="cart-modal" aria-hidden="true">
-      <div class="cart-panel">
-        <button id="close-cart" class="close-cart">&times;</button>
-        <h3>Your Cart</h3>
-        <div id="cart-items"></div>
-        <div class="cart-footer">
-          <div class="cart-totals">
-            <span>Subtotal</span>
-            <strong id="cart-subtotal">$0.00</strong>
-          </div>
-          <div class="cart-actions">
-            <button id="clear-cart" class="btn btn-secondary">Clear</button>
-            <button id="checkout-all" class="btn btn-primary">Checkout</button>
-          </div>
-        </div>
+  <!-- Product Modal -->
+  <div id="product-modal" class="modal" aria-hidden="true">
+    <div class="modal-panel">
+      <button id="modal-close" class="modal-close">&times;</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Cart Sidebar -->
+  <aside id="cart-panel" class="cart-panel" aria-hidden="true">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="close-cart" class="close-cart">×</button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="subtotal"><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
+      <div class="cart-actions">
+        <button id="clear-cart" class="btn btn-ghost">Clear</button>
+        <button id="checkout" class="btn btn-primary">Checkout</button>
       </div>
     </div>
-
-  </main>
+  </aside>
 
   <footer class="site-footer">
     <div class="container">
-      <p>© <span id="year"></span> My App Store — Built with static files & PWA</p>
+      <p>© <span id="year"></span> Blossom & Body — Demo store. Replace product links with your payment links.</p>
     </div>
   </footer>
 
   <script src="/app.js" defer></script>
   <script>
-    // Register service worker
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').catch(()=>{/*ignore*/});
+      navigator.serviceWorker.register('/sw.js').catch(()=>{/* ignore */});
     }
   </script>
 </body>
