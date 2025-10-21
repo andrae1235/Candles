@@ -1,25 +1,15 @@
-const CACHE = 'static-v1';
-const OFFLINE_URL = '/';
+const CACHE = 'blossom-static-v1';
+const FILES = ['/', '/index.html', '/styles.css', '/app.js', '/manifest.json'];
 
-self.addEventListener('install', (evt) => {
-  evt.waitUntil(
-    caches.open(CACHE).then(cache => cache.addAll([
-      '/',
-      '/index.html',
-      '/styles.css',
-      '/app.js',
-      '/manifest.json'
-    ]))
-  );
+self.addEventListener('install', evt => {
+  evt.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)));
   self.skipWaiting();
 });
 
-self.addEventListener('activate', (evt) => {
+self.addEventListener('activate', evt => {
   evt.waitUntil(self.clients.claim());
 });
 
-self.addEventListener('fetch', (evt) => {
-  evt.respondWith(
-    caches.match(evt.request).then(response => response || fetch(evt.request))
-  );
+self.addEventListener('fetch', evt => {
+  evt.respondWith(caches.match(evt.request).then(r => r || fetch(evt.request)));
 });
