@@ -1,10 +1,10 @@
 {
-  "name": "My App Store",
-  "short_name": "AppStore",
+  "name": "$CENTZ & Body",
+  "short_name": "GUEVA",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#111111",
+  "background_color": "YellowOrange",
+  "theme_color": "#6b3fb5",
   "icons": [
     { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
